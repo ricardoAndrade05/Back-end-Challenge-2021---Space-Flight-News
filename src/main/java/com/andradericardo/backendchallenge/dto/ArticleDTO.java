@@ -1,8 +1,12 @@
 package com.andradericardo.backendchallenge.dto;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.andradericardo.backendchallenge.domain.Article;
+import com.andradericardo.backendchallenge.domain.Event;
+import com.andradericardo.backendchallenge.domain.Launcher;
 
 public class ArticleDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -15,6 +19,8 @@ public class ArticleDTO implements Serializable {
 	private String newsSite;
 	private String summary;
 	private String publishedAt;
+	private List<Launcher> launches = new ArrayList<>();
+	private List<Event> events = new ArrayList<>();
 
 	public ArticleDTO() {
 
@@ -29,6 +35,8 @@ public class ArticleDTO implements Serializable {
 		this.newsSite = article.getNewsSite();
 		this.summary = article.getSummary();
 		this.publishedAt = article.getPublishedAt();
+		this.launches = article.getLaunches();
+		this.events = article.getEvents();
 	}
 
 	public Integer getId() {
@@ -93,6 +101,22 @@ public class ArticleDTO implements Serializable {
 
 	public void setPublishedAt(String publishedAt) {
 		this.publishedAt = publishedAt;
+	}
+
+	public List<Launcher> getLaunches() {
+		return launches;
+	}
+
+	public void setLaunches(List<Launcher> launches) {
+		this.launches = launches;
+	}
+
+	public List<Event> getEvents() {
+		return events;
+	}
+
+	public void setEvents(List<Event> events) {
+		this.events = events;
 	}
 
 }

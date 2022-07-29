@@ -1,12 +1,16 @@
 package com.andradericardo.backendchallenge.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Article implements Serializable {
@@ -22,6 +26,12 @@ public class Article implements Serializable {
 	private String newsSite;
 	private String summary;
 	private String publishedAt;
+	
+	@OneToMany(mappedBy = "article", cascade = CascadeType.ALL)
+	private List<Launcher> launches = new ArrayList<>(); 
+	
+	@OneToMany(mappedBy = "article", cascade = CascadeType.ALL)
+	private List<Event> events = new ArrayList<>(); 
 
 	public Article() {
 
@@ -102,6 +112,22 @@ public class Article implements Serializable {
 
 	public void setPublishedAt(String publishedAt) {
 		this.publishedAt = publishedAt;
+	}
+
+	public List<Launcher> getLaunches() {
+		return launches;
+	}
+
+	public void setLaunches(List<Launcher> launches) {
+		this.launches = launches;
+	}
+
+	public List<Event> getEvents() {
+		return events;
+	}
+
+	public void setEvents(List<Event> events) {
+		this.events = events;
 	}
 
 	@Override
