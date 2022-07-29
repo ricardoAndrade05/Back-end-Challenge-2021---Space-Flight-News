@@ -24,6 +24,13 @@ public class ArticleResource {
 		
 	}
 	
+	@RequestMapping(value ="/{id}",method = RequestMethod.GET)
+	public ResponseEntity<Article> find(@PathVariable Integer id ) {
+		Article article = service.find(id);
+		return ResponseEntity.ok().body(article);
+		
+	}
+	
 //	@RequestMapping(value = "/page", method = RequestMethod.GET)
 //	public ResponseEntity<Page<ArticleDTO>> findPage(
 //			@RequestParam(value ="page" ,defaultValue="0") Integer page,
@@ -33,12 +40,7 @@ public class ArticleResource {
 //		return ResponseEntity.ok().body(null);
 //	}
 	
-	@RequestMapping(value ="/{id}",method = RequestMethod.GET)
-	public ResponseEntity<Article> find(@PathVariable Integer id ) {
-		Article article = service.find(id);
-		return ResponseEntity.ok().body(article);
-		
-	}
+
 	
 //	@RequestMapping(method = RequestMethod.POST)
 //	public ResponseEntity<Void> insert(@Valid @RequestBody ArticleDTO articleDTO){
