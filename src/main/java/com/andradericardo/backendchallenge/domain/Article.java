@@ -20,7 +20,7 @@ public class Article implements Serializable {
 	private String url;
 	private String imageUrl;
 	private String newsSite;
-	private String sumary;
+	private String summary;
 	private String publishedAt;
 
 	public Article() {
@@ -28,7 +28,7 @@ public class Article implements Serializable {
 	}
 
 	public Article(Integer id, Boolean featured, String title, String url, String imageUrl, String newsSite,
-			String sumary, String publishedAt) {
+			String summary, String publishedAt) {
 		super();
 		this.id = id;
 		this.featured = featured;
@@ -36,7 +36,7 @@ public class Article implements Serializable {
 		this.url = url;
 		this.imageUrl = imageUrl;
 		this.newsSite = newsSite;
-		this.sumary = sumary;
+		this.summary = summary;
 		this.publishedAt = publishedAt;
 	}
 
@@ -88,12 +88,12 @@ public class Article implements Serializable {
 		this.newsSite = newsSite;
 	}
 
-	public String getSumary() {
-		return sumary;
+	public String getSummary() {
+		return summary;
 	}
 
-	public void setSumary(String sumary) {
-		this.sumary = sumary;
+	public void setSummary(String summary) {
+		this.summary = summary;
 	}
 
 	public String getPublishedAt() {
