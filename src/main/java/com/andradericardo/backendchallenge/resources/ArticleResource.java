@@ -53,6 +53,8 @@ public class ArticleResource {
 	public ResponseEntity<Void> insert(@RequestBody ArticleDTO articleDTO){
 		Article article = service.fromDTO(articleDTO);
 		article = service.insert(article);
+		service.addLaunchersInArticle(articleDTO.getLaunches(),article);
+		service.addEventsInArticle(articleDTO.getEvents(),article);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
 				.path("/{id}").buildAndExpand(article.getId()).toUri();
 		return ResponseEntity.created(uri).build();
@@ -62,6 +64,8 @@ public class ArticleResource {
 	public ResponseEntity<Void> update(@RequestBody ArticleDTO articleDTO,@PathVariable Integer id){
 		Article article = service.fromDTO(articleDTO);
 		article.setId(id);
+		service.addLaunchersInArticle(articleDTO.getLaunches(),article);
+		service.addEventsInArticle(articleDTO.getEvents(),article);
 		article = service.update(article);
 		return ResponseEntity.noContent().build();	
 	}
