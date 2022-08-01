@@ -62,6 +62,7 @@ public class ArticleResource {
 	
 	@RequestMapping(value="/articles/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<Void> update(@RequestBody ArticleDTO articleDTO,@PathVariable Integer id){
+		service.find(id);
 		Article article = service.fromDTO(articleDTO);
 		article.setId(id);
 		service.addLaunchersInArticle(articleDTO.getLaunches(),article);

@@ -38,7 +38,11 @@ public class ArticleService {
 	}
 
 	public void delete(Integer id) {
-		repo.deleteById(id);
+		Article article = find(id);
+		if (article != null) {
+			repo.deleteById(id);	
+		}
+		
 	}
 	
 	public Page<Article> findPage(Integer pagina, Integer linhasPorPagina,String direction,String orderBy){	
@@ -60,7 +64,12 @@ public class ArticleService {
 	}
 
 	public Article update(Article updateArticle) {
-		return repo.save(updateArticle);
+		Article article = find(updateArticle.getId());
+		if (article != null) {
+			return repo.save(updateArticle);
+		}
+		return null;
+		
 	}
 
 //	private void updateData(Article updateArticle, Article oldArticle) {
